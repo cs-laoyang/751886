@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=gb2312">
+    <meta name="viewport" content="width=640,maximum-scale=4,user-scalable=no">
+    <title>Title</title>
+    <style type="text/css">
+        div{margin: 200px auto; text-align: center; font-size: 24px; line-height: 80px}
+        span{color: red}
+        #new{font-size: 32px}
+    </style>
+</head>
+<body>
+<div>您当前访问的域名：<span id="now"></span> 已经停止使用，请记住我们的新域名<br /><span id="new"></span><br /><span id="time">5</span>秒之后将自动跳转到新网址</div>
+<script type="text/javascript">
+    document.getElementById('now').innerHTML = document.domain;
+    document.title = document.domain+'已经停止使用';
+    var newdomain = '569836.com';
+    document.getElementById('new').innerHTML = newdomain;
+    var times = setInterval(function () {
+        var time = document.getElementById('time').innerHTML;
+        if (time <= 1){
+            clearInterval(times);
+            window.location = 'https://'+newdomain+'';
+        }else{
+            document.getElementById('time').innerHTML = time-1;
+        }
+    },1000)
+</script>
+</body>
+</html>
